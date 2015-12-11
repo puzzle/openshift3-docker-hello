@@ -3,7 +3,7 @@
 BUILD_DIR="$1"
 TAG="$2"
 
-REVISION=`svnversion "${BUILD_DIR}"`
+REVISION=`svn info "${BUILD_DIR}" | awk '/Revision/ { print $2; }'`
 BUILD_TAG="${TAG%:*}:r${REVISION}"
 
 docker tag -f "${TAG}" "${BUILD_TAG}"
