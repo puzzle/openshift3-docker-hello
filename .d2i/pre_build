@@ -6,4 +6,4 @@ TAG="$2"
 URL=`svn info "${BUILD_DIR}" | awk '/URL/ { print $2; }'` svnrevision=`
 REVISION=`svnversion "${BUILD_DIR}"`
 
-echo "LABEL svnurl=${URL} svnrevision=${REVISION}" >>Dockerfile
+echo "LABEL svnurl=${URL} svnrevision=${REVISION}" >>"${BUILD_DIR}/Dockerfile"
