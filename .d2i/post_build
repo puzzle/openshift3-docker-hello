@@ -1,0 +1,10 @@
+#!/bin/sh
+
+BUILD_DIR="$1"
+TAG="$2"
+
+REVISION=`svnversion "${BUILD_DIR}"`
+BUILD_TAG="${TAG%:*}:r${REVISION}"
+
+docker tag -f "${TAG}" "${BUILD_TAG}"
+docker push "${BUILD_TAG}"
